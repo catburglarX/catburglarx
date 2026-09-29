@@ -34,24 +34,31 @@ function monthLabels(weeks: Contributions["weeks"]) {
   return labels;
 }
 
-function plural(n: number, word: string) {
-  return `${n.toLocaleString("en-GB")} ${word}${n === 1 ? "" : "s"}`;
-}
-
 function Calendar({ data }: { data: Contributions }) {
   const labels = monthLabels(data.weeks);
   const columns = `repeat(${data.weeks.length}, 11px)`;
   return (
     <>
-      <dl className="mb-4 grid grid-cols-3 gap-3 text-center sm:text-left">
-        {[
-          ["in the last year", plural(data.total, "contribution")],
-          ["current streak", plural(data.currentStreak, "day")],
-          ["longest streak", plural(data.longestStreak, "day")],
-        ].map(([label, value]) => (
-          <div key={label} className="rounded-control bg-muted px-3 py-2.5">
-            <dt className="text-xs font-bold text-muted-foreground">{label}</dt>
-            <dd className="font-heading text-lg font-semibold sm:text-xl">{value}</dd>
+      <dl className="mb-5 grid grid-cols-3 gap-2 sm:gap-3">
+        {(
+          [
+            [data.total === 1 ? "contribution this year" : "contributions this year", data.total],
+            [
+              data.currentStreak === 1 ? "day in a row now" : "days in a row now",
+              data.currentStreak,
+            ],
+            ["most days in a row", data.longestStreak],
+          ] as const
+        ).map(([label, value]) => (
+          // Number first on screen, label first for screen readers.
+          <div
+            key={label}
+            className="flex flex-col-reverse rounded-control bg-muted px-3 py-3 text-center sm:text-left"
+          >
+            <dt className="text-xs leading-snug font-bold text-muted-foreground">{label}</dt>
+            <dd className="font-heading text-2xl font-semibold sm:text-3xl">
+              {value.toLocaleString("en-GB")}
+            </dd>
           </div>
         ))}
       </dl>
@@ -140,7 +147,7 @@ export async function Activity() {
       <SectionHeading
         id="activity"
         title="activity"
-        intro="My real GitHub contribution calendar. It updates once a day."
+        intro="My GitHub contributions from the last year. This updates every day."
       />
       <BlurFade className="card p-5 sm:p-6">
         {data ? <Calendar data={data} /> : <Fallback />}

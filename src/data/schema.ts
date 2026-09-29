@@ -21,7 +21,7 @@ export const skillSchema = z.object({
 export const educationSchema = z.object({
   school: nonEmpty,
   detail: nonEmpty,
-  period: nonEmpty,
+  period: nonEmpty.optional(),
   current: z.boolean().default(false),
   // A key in src/generated/images.json.
   logo: nonEmpty,

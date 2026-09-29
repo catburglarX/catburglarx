@@ -21,13 +21,15 @@ export function Footer() {
         ))}
       </ul>
       <p>
-        Made by {profile.name} with coffee and{" "}
+        Made with coffee and{" "}
         <code className="rounded-md border border-border bg-card px-1.5 py-0.5 font-mono text-xs text-foreground">
           {"{ code }"}
         </code>
-        . © {new Date().getFullYear()}
       </p>
       <p className="mt-1">
+        © {new Date().getFullYear()} {profile.name}
+      </p>
+      <p className="mt-2">
         <Link href="/resume/" className="link">
           Résumé
         </Link>

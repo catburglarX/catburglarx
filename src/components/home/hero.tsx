@@ -35,15 +35,18 @@ export function Hero() {
         </p>
         <p className="mx-auto mt-4 max-w-[52ch] text-[1.0625rem] sm:mx-0">{profile.bio}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3 sm:justify-start">
-          <Link href="/#projects" className={buttonStyles.primary}>
+          <Link href="/#projects" className={`${buttonStyles.primary} w-full sm:w-auto`}>
             <FolderGit2 aria-hidden="true" className="size-4" strokeWidth={2.25} />
             Projects
           </Link>
-          <Link href="/resume/" className={buttonStyles.ghost}>
+          <Link href="/resume/" className={`${buttonStyles.ghost} flex-1 sm:flex-none`}>
             <FileText aria-hidden="true" className="size-4" strokeWidth={2.25} />
             Résumé
           </Link>
-          <a href={`mailto:${profile.email}`} className={buttonStyles.ghost}>
+          <a
+            href={`mailto:${profile.email}`}
+            className={`${buttonStyles.ghost} flex-1 sm:flex-none`}
+          >
             <Mail aria-hidden="true" className="size-4" strokeWidth={2.25} />
             Email
           </a>

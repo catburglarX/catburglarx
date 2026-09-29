@@ -48,6 +48,8 @@ test.describe("smoke", () => {
     expect(response?.status()).toBe(404);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("This page is asleep");
     await expect(page.getByRole("link", { name: "Go home" })).toBeVisible();
+    await page.getByRole("button", { name: "Search the site" }).click();
+    await expect(page.getByRole("dialog", { name: "Command menu" })).toBeVisible();
   });
 });
 

@@ -7,7 +7,7 @@
 **coffee and { code }**
 
 First-year B.Tech CSE student at Poornima College of Engineering, Jaipur.<br />
-I write HTML and CSS, I'm learning Python, and I'm looking for an internship and a hackathon team.
+I know HTML and CSS, I'm learning Python, and I'm looking for an internship and a hackathon team.
 
 [Portfolio](https://catburglarx.github.io/catburglarx/) ·
 [Email](mailto:connect.antrakumari@gmail.com) ·
@@ -28,11 +28,11 @@ I write HTML and CSS, I'm learning Python, and I'm looking for an internship and
 
 ### What I'm working on
 
-**[Maanak](https://github.com/catburglarX/maanak)** records inspections of packaged goods in India.<br />
-It reads the label from a photo, keeps the photo beside every reading,<br />
-and never turns missing evidence into a violation. FastAPI, PostgreSQL, OCR.
+**[Maanak](https://github.com/catburglarX/maanak)** helps officers check packaged goods in India.<br />
+It reads the label from a photo, keeps the photo next to every reading,<br />
+and never guesses when something is missing. Built with FastAPI, PostgreSQL and OCR.
 
-[Read the case study](https://catburglarx.github.io/catburglarx/projects/maanak/)
+[Read how I built it](https://catburglarx.github.io/catburglarx/projects/maanak/)
 
 ### What I use
 
@@ -42,11 +42,11 @@ and never turns missing evidence into a violation. FastAPI, PostgreSQL, OCR.
 <img src="public/tech/github.svg" width="40" height="40" alt="GitHub" title="GitHub" />&nbsp;&nbsp;
 <img src="public/tech/python.svg" width="40" height="40" alt="Python, which I'm learning now" title="Python (learning now)" />
 
-HTML and CSS, Git and GitHub. Learning Python right now.
+HTML, CSS, Git and GitHub. Learning Python right now.
 
 ### Hackathons
 
-Took part in Smart India Hackathon 2026. If your team needs someone for the next one, [email me](mailto:connect.antrakumari@gmail.com).
+I took part in Smart India Hackathon 2026. If your team needs someone for the next one, [email me](mailto:connect.antrakumari@gmail.com).
 
 </div>
 

@@ -6,7 +6,7 @@ import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Every project Antra Kumari has built, with a case study for each.",
+  description: "Everything Antra Kumari has built, with a write-up for each project.",
   alternates: { canonical: absoluteUrl("/projects/") },
 };
 
@@ -24,8 +24,8 @@ export default async function ProjectsPage() {
         <Braces>projects</Braces>
       </h1>
       <p className="mt-3 mb-8 max-w-[60ch] text-muted-foreground">
-        Everything I&apos;ve built, newest first. Pick a tag to filter. I&apos;m in my first year,
-        so the list is short for now. New work goes here when it&apos;s finished.
+        Everything I&apos;ve built. Pick a tag to filter. I&apos;m in my first year, so the list is
+        short for now.
       </p>
       <ProjectFilter projects={metas} tags={tags} />
     </main>

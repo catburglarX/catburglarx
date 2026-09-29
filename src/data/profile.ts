@@ -14,12 +14,13 @@ export const profile = {
   email: "connect.antrakumari@gmail.com",
   status: "Open to internships and hackathon teams",
   tagline: "coffee and { code }",
-  typedLines: ["coffee and code", "B.Tech CSE, first year", "learning Python", "building Maanak"],
-  bio: "I'm a first-year computer science student at Poornima College of Engineering in Jaipur. I write HTML and CSS, I'm learning Python, and my main project is Maanak. I'm looking for an internship and a team for the next hackathon.",
+  // Keep these about the same length, so the braces around them sit close.
+  typedLines: ["coffee and code", "CSE, first year", "learning Python", "building Maanak"],
+  bio: "I study computer science at Poornima College of Engineering in Jaipur. I'm in my first year. I know HTML and CSS, and I'm learning Python. I'm looking for an internship and a hackathon team.",
   about: [
-    "I started with HTML and CSS, and those are still the two I'm most comfortable with. This site is built on them, with a lot of care spent on how it reads on a small phone.",
-    "Maanak is the project I've spent the most time on. It records inspections of packaged goods in India. Its main rule is simple: if the photo doesn't show something, the app says it can't tell. It never turns missing evidence into a violation.",
-    "Right now I'm learning Python properly, one small program at a time. I took part in Smart India Hackathon 2026 and I want to do more hackathons, so if your team needs someone, write to me.",
+    "I started with HTML and CSS. I still like them the most. I care about small things, like how a page looks on a small phone.",
+    "My main project is Maanak. It helps officers check packaged goods in India from a photo. If the photo doesn't show something, the app says so. It never guesses.",
+    "Now I'm learning Python, one small program at a time. I took part in Smart India Hackathon 2026, and I want to join more hackathons.",
   ],
   aboutCode: {
     pronouns: "she/her",
@@ -29,7 +30,7 @@ export const profile = {
     lookingFor: ["internship", "team"],
     fuel: "coffee",
   },
-  catLines: ["meow", "hi, I'm Antra's cat", "git push?", "more coffee, please", "purr"],
+  catLines: ["meow", "hi there", "git push?", "more coffee, please", "purr"],
   skills: [
     {
       group: "Languages",
@@ -54,34 +55,32 @@ export const profile = {
     {
       school: "Poornima College of Engineering",
       detail: "B.Tech, Computer Science and Engineering",
-      period: "2026 to now",
+      period: "Since 2026",
       current: true,
       logo: "poornima",
     },
     {
       school: "Birla Open Minds International School",
       detail: "Classes 11 and 12",
-      period: "Senior school",
       logo: "birla-open-minds",
     },
     {
       school: "Banasthali Vidyapith",
       detail: "Classes 6 to 10",
-      period: "Middle and high school",
       logo: "banasthali",
     },
   ],
   events: [
     {
-      title: "Smart India Hackathon 2026",
+      title: "Smart India Hackathon",
       when: "2026",
-      description: "I took part in SIH 2026, India's national hackathon for students.",
+      description: "I took part in SIH 2026. It is India's national hackathon for students.",
       logo: "sih",
       url: "https://sih.gov.in/",
     },
   ],
   lookingForTeam:
-    "I'm looking for a team for my next hackathon. I can build the front end and I'm getting better at Python.",
+    "I want to join a team for my next hackathon. I can build web pages, and I'm getting better at Python.",
   socials: [
     { name: "GitHub", handle: "catburglarX", url: "https://github.com/catburglarX" },
     { name: "LinkedIn", handle: "catburglarX", url: "https://www.linkedin.com/in/catburglarX" },

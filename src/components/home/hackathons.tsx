@@ -11,7 +11,7 @@ export function Hackathons() {
       <SectionHeading
         id="hackathons"
         title="hackathons"
-        intro="Events I've taken part in, and the next one I'm looking for."
+        intro="Hackathons I've been part of, and what I want next."
       />
       <ol className="relative grid gap-4 before:absolute before:top-6 before:bottom-6 before:left-[27px] before:w-0.5 before:bg-[repeating-linear-gradient(to_bottom,var(--blush)_0_6px,transparent_6px_12px)]">
         {profile.events.map((event) => (
@@ -30,7 +30,7 @@ export function Hackathons() {
                   rel="noopener noreferrer"
                   className="link mt-1 inline-flex min-h-11 items-center gap-1 text-sm"
                 >
-                  About {event.title.replace(/\s\d{4}$/, "")}
+                  {new URL(event.url).hostname.replace(/^www\./, "")}
                   <ExternalLink aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
@@ -44,13 +44,13 @@ export function Hackathons() {
           </span>
           <BlurFade className="rounded-card border-2 border-dashed border-border px-5 py-4">
             <p className="font-mono text-xs text-muted-foreground">next</p>
-            <h3 className="mt-0.5 text-lg">Looking for a team</h3>
+            <h3 className="mt-0.5 text-lg">My next hackathon</h3>
             <p className="mt-1 text-[0.9375rem] text-muted-foreground">{profile.lookingForTeam}</p>
             <Link
               href="/#contact"
               className="link mt-1 inline-flex min-h-11 items-center gap-1 text-sm"
             >
-              Invite me
+              Ask me to join
               <ArrowRight aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
             </Link>
           </BlurFade>

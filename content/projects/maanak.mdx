@@ -1,7 +1,7 @@
 ---
 title: Maanak
 slug: maanak
-summary: Evidence-led inspection recording for packaged goods in India. It reads the label from a photo, keeps the photo beside every reading, and never turns missing evidence into a violation.
+summary: A web app that helps officers check packaged goods in India. It reads the label from a photo, keeps the photo next to every reading, and never guesses when something is missing.
 date: 2026-09-25
 tags: [Python, FastAPI, PostgreSQL, OCR, Accessibility]
 stack:
@@ -28,32 +28,47 @@ status: active
 
 ## The problem
 
-When a Legal Metrology officer checks a packet in a shop, the check usually ends up on a paper form. Months later, if the trader challenges it, the packet is gone, the photo may not exist, and nobody wrote down the sum behind "price per kg wrong".
+In India, Legal Metrology officers check packets in shops. They look for things the law says must be printed, like the price, the weight and who made it. Most of this still goes on a paper form.
 
-The hardest part is a blank box on that form. It can mean three different things. The packet really doesn't print the declaration, which is an offence. The photo only shows the front, so nobody has seen the back. Or the print is there but unreadable. Only the first one is a violation, and on paper all three look the same.
+Paper has a big gap. Months later, if a shop owner says the check was wrong, the packet is gone. There may be no photo. Nobody wrote down how the numbers were worked out.
+
+A blank box on the form is the hardest part. It can mean three different things:
+
+- The packet really doesn't show the detail. That breaks the rule.
+- The photo only shows the front, so nobody saw the back.
+- The detail is there, but it's too blurry to read.
+
+Only the first one is a real problem. On paper, all three look the same.
 
 ## What I built
 
-Maanak is a web app where the officer takes a photo instead of filling in a form. It checks the photo before it's kept, reads the label, and shows each reading next to the exact crop of the image it came from. The officer confirms, corrects or rejects every value. Only reviewed values reach the rules, and the final report is frozen and hashed so anyone can check later that it hasn't changed.
+With Maanak, the officer takes a photo instead of filling in a form. The app:
+
+1. Checks if the photo is clear enough, and says what to fix, like "strong glare is covering part of the panel".
+2. Reads the label in English and Hindi.
+3. Shows every value next to the part of the photo it came from.
+4. Lets the officer confirm, correct or reject each value.
+5. Runs the rules only on values the officer confirmed.
+6. Makes a report that is locked, so nobody can change it later.
 
 <Screenshot
   image="maanak-services"
   alt="The Maanak public services page, listing what a shopper can do without an account."
-  caption="Public services. A shopper can report a product or verify a report without an account."
+  caption="Anyone can report a product or check a report without making an account."
 />
 
-Before officer review, one test inspection gives 7 "additional evidence required", 3 "unable to determine" and 0 non-compliant findings. After review of the same photo, 10 rules apply and 1 non-compliant finding appears. The evidence didn't change. The review did.
+Here is the idea in numbers. On one test inspection, before the officer checked anything, the app gave 7 "need more evidence", 3 "can't tell" and 0 violations. After the officer checked the same photo, 10 rules could run and 1 violation showed up. The photo didn't change. The officer's check did.
 
 ## Stack
 
-FastAPI serves the API and a separate arq worker runs OCR, so no request waits on it. PostgreSQL 16 is the only database, Redis carries the queue, MinIO stores the photos with encryption at rest, and nginx serves the front end. The front end is plain HTML, CSS and ES modules with no build step, which lets the content security policy be `default-src 'self'` with no `unsafe-inline`. Everything starts with one command:
+FastAPI runs the API. A separate worker reads the labels, so nobody waits on it. PostgreSQL stores the data, Redis holds the queue, MinIO stores the photos, and nginx serves the pages. The front end is plain HTML, CSS and JavaScript with no build step. It all starts with one command:
 
 ```bash
 cp .env.example .env
 docker compose up --build -d
 ```
 
-Money and quantities use `Decimal`, never floats, and round half up to the paisa:
+Money is never stored as a float. It uses `Decimal`, so the paisa is always right:
 
 ```python
 from decimal import Decimal, ROUND_HALF_UP
@@ -61,32 +76,32 @@ from decimal import Decimal, ROUND_HALF_UP
 price = Decimal("28.00")
 grams = Decimal("235")
 per_kg = (price / grams * 1000).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-# 119.15, not the 119.14 a phone calculator suggests
+# 119.15, not the 119.14 a phone calculator gives
 ```
 
 ## The hardest problem
 
-Reading real packaging. On labels the project generates, the reader gets 72 of 80 fields right. Every one of the 8 misses is the same: it reads "lodised" for "Iodised", because a capital I and a lowercase l are the same shape in most sans-serif fonts. I didn't add a rule to "fix" it, because the same rule would turn "Lemon" into "Iemon". The app flags the ambiguity to the officer instead.
+Reading real labels. On labels the project makes itself, the reader gets 72 of 80 values right. All 8 misses are the same mistake. It reads "Iodised" as "lodised", because a capital I and a small l look the same in most fonts. I didn't add a rule to "fix" it, because that rule would also turn "Lemon" into "Iemon". The app tells the officer instead.
 
-On 14 real photos of Indian packs from Open Food Facts, it was much worse. Only 6 of 14 gave any declaration, and net quantity came out of none of them. So the design assumes the reader will fail. Across all 14 photos, the number of non-compliant findings produced before officer review was 0.
+Real photos were much harder. I tested 14 photos of Indian packets from Open Food Facts. Only 6 gave any value at all, and none gave the weight. So I built the app to expect this. Across all 14 photos, it raised 0 violations before an officer checked them.
 
 <Screenshot
   image="maanak-rules"
-  alt="The Maanak rules governance table. Every rule version is approved but marked legal authority not confirmed."
-  caption="Every rule interpretation is versioned, and none is marked as confirmed against the gazette, because none has been checked yet."
+  alt="The Maanak rules table. Every rule version is approved, and every one is marked as not confirmed against the law."
+  caption="Every rule has a version. None is marked as confirmed against the law yet, because none has been checked."
 />
 
 ## What I learned
 
-- A failed reading should land in front of a person, not become a finding.
-- Measure with the strict question. An early OCR test counted a hit if the number or the unit appeared anywhere, and it made a useless change look like a big gain.
-- Say what isn't done. The README and the site list what's missing, like TLS and an outside security review, next to what works.
-- Put the important rules where they can't be skipped. Only reviewed values reach the rule engine, and that check lives in the engine, not in the screen.
+- When the app can't read something, a person should look at it. It should never become a violation on its own.
+- Test with the strict question. One early test counted a hit if the number or the unit showed up anywhere. It made a useless change look like a big win.
+- Be honest about what's missing. The project lists what isn't done yet, like HTTPS and an outside security review.
+- Put important rules where they can't be skipped. The "only use checked values" rule lives inside the rule engine, not just on the screen.
 
 <Screenshot
   image="maanak-legal"
-  alt="The Maanak legal sources page. It lists 11 interpretations and 0 verified citations."
-  caption="The legal sources page says plainly that 0 of the 11 citations are verified."
+  alt="The Maanak legal sources page. It shows 11 rules and 0 checked citations."
+  caption="The legal sources page says clearly that 0 of the 11 citations have been checked yet."
 />
 
-Maanak is not a government service. It isn't affiliated with or endorsed by any authority, and every legal conclusion is recorded against the officer who made it.
+Maanak is not a government service. No authority runs it or has approved it. Every decision in it is saved under the name of the officer who made it.

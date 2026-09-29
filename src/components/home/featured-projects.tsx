@@ -12,7 +12,7 @@ export async function FeaturedProjects() {
       <SectionHeading
         id="projects"
         title="projects"
-        intro="The work I'm proudest of so far. Each one has a case study with the numbers."
+        intro="Things I've built. Each one has a full write-up."
       />
       <ul className="grid gap-4 md:grid-cols-2">
         {projects.map((project, i) => (

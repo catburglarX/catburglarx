@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 // What the résumé says about each project. Kept short so the page fits on one A4 sheet.
 const HIGHLIGHTS: Record<string, string[]> = {
   maanak: [
-    "Web app that records inspections of packaged goods from photos, with OCR in English and Hindi and a frozen, hashed report at the end.",
-    "Designed so missing evidence is never reported as a violation: 0 non-compliant findings before officer review across 14 real package photos.",
-    "321 unit tests, 0 axe violations across 14 public pages, and a CI pipeline of seven jobs on every push.",
+    "A web app that checks packaged goods from a photo. It reads labels in English and Hindi and makes a locked report.",
+    "It never guesses when something is missing. Across 14 real packet photos, it raised 0 violations before an officer checked them.",
+    "321 unit tests, no accessibility errors on 14 public pages, and 7 automatic checks on every push.",
   ],
 };
 
@@ -50,7 +50,7 @@ export default async function ResumePage() {
       className="mx-auto w-[min(820px,calc(100%-40px))] pt-10 outline-none print:w-full print:pt-0"
     >
       <div className="no-print mb-6 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-muted-foreground">One page. Prints cleanly on A4.</p>
+        <p className="text-muted-foreground">Fits on one A4 page.</p>
         <div className="flex flex-wrap gap-3">
           <a href={assetPath(profile.resumePdf)} download className={buttonStyles.primary}>
             <Download aria-hidden="true" className="size-4" strokeWidth={2.25} />

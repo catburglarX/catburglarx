@@ -24,7 +24,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 const ogAlt = `${profile.name}, ${profile.role}. coffee and { code }`;
-const description = `${profile.name} is a ${profile.role.toLowerCase()} at Poornima College of Engineering, Jaipur. HTML, CSS, learning Python, and the Maanak project. Open to internships and hackathon teams.`;
+const description = `${profile.name} is a first-year computer science student at Poornima College of Engineering, Jaipur. She knows HTML and CSS, is learning Python, and built Maanak. Open to internships and hackathon teams.`;
 
 export const metadata: Metadata = {
   // Includes the base path, so generated image URLs land under /catburglarx.
