@@ -12,23 +12,15 @@ import { getProjects } from "@/lib/projects";
 import { SITE_URL, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
-const fredoka = Fredoka({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--font-fredoka",
-  display: "swap",
-});
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-nunito",
-  display: "swap",
-});
+// All three are variable fonts, so one file per family covers every weight.
+// The mono font is not preloaded: it is only used for small labels and code.
+const fredoka = Fredoka({ subsets: ["latin"], variable: "--font-fredoka", display: "swap" });
+const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito", display: "swap" });
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
   variable: "--font-jetbrains",
   display: "swap",
+  preload: false,
 });
 
 const ogAlt = `${profile.name}, ${profile.role}. coffee and { code }`;
