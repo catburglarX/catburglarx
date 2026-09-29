@@ -58,7 +58,6 @@ export default async function OpengraphImage() {
           <span style={{ color: "#2d8676" }}>{"}"}</span>
         </div>
       </div>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={avatar} width={360} height={360} alt="" style={{ borderRadius: 80 }} />
     </div>,
     {
