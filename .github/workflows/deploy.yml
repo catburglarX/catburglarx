@@ -49,7 +49,7 @@ jobs:
       - name: JavaScript budget
         run: pnpm check:bundle
 
-      - name: Résumé PDF
+      - name: Resume PDF
         run: |
           pnpm exec playwright install --with-deps chromium
           pnpm resume:pdf

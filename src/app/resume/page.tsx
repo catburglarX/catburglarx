@@ -8,12 +8,12 @@ import { getProjects } from "@/lib/projects";
 import { absoluteUrl, assetPath } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Résumé",
-  description: `Résumé of ${profile.name}, ${profile.role.toLowerCase()}.`,
+  title: "Resume",
+  description: `Resume of ${profile.name}, ${profile.role.toLowerCase()}.`,
   alternates: { canonical: absoluteUrl("/resume/") },
 };
 
-// What the résumé says about each project. Kept short so the page fits on one A4 sheet.
+// What the resume says about each project. Kept short so the page fits on one A4 sheet.
 const HIGHLIGHTS: Record<string, string[]> = {
   maanak: [
     "A web app that checks packaged goods from a photo. It reads labels in English and Hindi and makes a locked report.",

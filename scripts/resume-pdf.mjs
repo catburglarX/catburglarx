@@ -34,7 +34,7 @@ try {
   await browser.close();
 
   const pages = (pdf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) ?? []).length;
-  if (pages !== 1) throw new Error(`The résumé printed on ${pages} pages. It has to fit on one.`);
+  if (pages !== 1) throw new Error(`The resume printed on ${pages} pages. It has to fit on one.`);
   await writeFile(OUT, pdf);
   console.log(
     `Wrote ${path.relative(process.cwd(), OUT)} (1 page, ${(pdf.length / 1024).toFixed(0)} KB).`,

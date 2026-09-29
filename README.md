@@ -118,7 +118,7 @@ src/components/mascot/  the cat, drawn once as SVG and reused everywhere
 src/components/projects/  project card, tag filter, MDX renderer, screenshot
 src/components/ui/      small shared pieces: headings with braces, buttons, logos
 src/lib/                site paths, GitHub fetch, MDX loader, Shiki theme, stores
-scripts/                asset processing, CSP, contrast, bundle budget, résumé PDF
+scripts/                asset processing, CSP, contrast, bundle budget, resume PDF
 tests/                  Playwright smoke and accessibility tests
 ```
 

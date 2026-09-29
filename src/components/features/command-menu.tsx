@@ -195,11 +195,11 @@ export default function CommandMenu({
                       </Command.Item>
                       <Command.Item
                         value="page resume"
-                        keywords={["cv", "résumé", "pdf"]}
+                        keywords={["cv", "pdf"]}
                         onSelect={() => run(() => router.push("/resume/"))}
                         className={itemClass}
                       >
-                        <Row icon={<FileText className="size-4" strokeWidth={2} />}>Résumé</Row>
+                        <Row icon={<FileText className="size-4" strokeWidth={2} />}>Resume</Row>
                       </Command.Item>
                     </Command.Group>
 

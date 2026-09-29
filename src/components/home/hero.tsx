@@ -41,7 +41,7 @@ export function Hero() {
           </Link>
           <Link href="/resume/" className={`${buttonStyles.ghost} flex-1 sm:flex-none`}>
             <FileText aria-hidden="true" className="size-4" strokeWidth={2.25} />
-            Résumé
+            Resume
           </Link>
           <a
             href={`mailto:${profile.email}`}

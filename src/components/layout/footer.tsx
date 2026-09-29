@@ -31,7 +31,7 @@ export function Footer() {
       </p>
       <p className="mt-2">
         <Link href="/resume/" className="link">
-          Résumé
+          Resume
         </Link>
         <span aria-hidden="true"> · </span>
         <a

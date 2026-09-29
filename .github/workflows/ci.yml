@@ -56,7 +56,7 @@ jobs:
       - name: Playwright tests
         run: pnpm test
 
-      - name: Résumé fits on one A4 page
+      - name: Resume fits on one A4 page
         run: pnpm resume:pdf
 
       - name: Upload the test report
