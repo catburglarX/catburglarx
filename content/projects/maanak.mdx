@@ -1,0 +1,92 @@
+---
+title: Maanak
+slug: maanak
+summary: Evidence-led inspection recording for packaged goods in India. It reads the label from a photo, keeps the photo beside every reading, and never turns missing evidence into a violation.
+date: 2026-09-25
+tags: [Python, FastAPI, PostgreSQL, OCR, Accessibility]
+stack:
+  [
+    Python,
+    FastAPI,
+    PostgreSQL 16,
+    Redis,
+    MinIO,
+    Tesseract OCR,
+    nginx,
+    Docker Compose,
+    HTML,
+    CSS,
+    JavaScript,
+  ]
+links:
+  code: https://github.com/catburglarX/maanak
+cover: maanak-home
+coverAlt: The Maanak home page, with the heading "Read the label. Test the rule. Show the proof."
+featured: true
+status: active
+---
+
+## The problem
+
+When a Legal Metrology officer checks a packet in a shop, the check usually ends up on a paper form. Months later, if the trader challenges it, the packet is gone, the photo may not exist, and nobody wrote down the sum behind "price per kg wrong".
+
+The hardest part is a blank box on that form. It can mean three different things. The packet really doesn't print the declaration, which is an offence. The photo only shows the front, so nobody has seen the back. Or the print is there but unreadable. Only the first one is a violation, and on paper all three look the same.
+
+## What I built
+
+Maanak is a web app where the officer takes a photo instead of filling in a form. It checks the photo before it's kept, reads the label, and shows each reading next to the exact crop of the image it came from. The officer confirms, corrects or rejects every value. Only reviewed values reach the rules, and the final report is frozen and hashed so anyone can check later that it hasn't changed.
+
+<Screenshot
+  image="maanak-services"
+  alt="The Maanak public services page, listing what a shopper can do without an account."
+  caption="Public services. A shopper can report a product or verify a report without an account."
+/>
+
+Before officer review, one test inspection gives 7 "additional evidence required", 3 "unable to determine" and 0 non-compliant findings. After review of the same photo, 10 rules apply and 1 non-compliant finding appears. The evidence didn't change. The review did.
+
+## Stack
+
+FastAPI serves the API and a separate arq worker runs OCR, so no request waits on it. PostgreSQL 16 is the only database, Redis carries the queue, MinIO stores the photos with encryption at rest, and nginx serves the front end. The front end is plain HTML, CSS and ES modules with no build step, which lets the content security policy be `default-src 'self'` with no `unsafe-inline`. Everything starts with one command:
+
+```bash
+cp .env.example .env
+docker compose up --build -d
+```
+
+Money and quantities use `Decimal`, never floats, and round half up to the paisa:
+
+```python
+from decimal import Decimal, ROUND_HALF_UP
+
+price = Decimal("28.00")
+grams = Decimal("235")
+per_kg = (price / grams * 1000).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+# 119.15, not the 119.14 a phone calculator suggests
+```
+
+## The hardest problem
+
+Reading real packaging. On labels the project generates, the reader gets 72 of 80 fields right. Every one of the 8 misses is the same: it reads "lodised" for "Iodised", because a capital I and a lowercase l are the same shape in most sans-serif fonts. I didn't add a rule to "fix" it, because the same rule would turn "Lemon" into "Iemon". The app flags the ambiguity to the officer instead.
+
+On 14 real photos of Indian packs from Open Food Facts, it was much worse. Only 6 of 14 gave any declaration, and net quantity came out of none of them. So the design assumes the reader will fail. Across all 14 photos, the number of non-compliant findings produced before officer review was 0.
+
+<Screenshot
+  image="maanak-rules"
+  alt="The Maanak rules governance table. Every rule version is approved but marked legal authority not confirmed."
+  caption="Every rule interpretation is versioned, and none is marked as confirmed against the gazette, because none has been checked yet."
+/>
+
+## What I learned
+
+- A failed reading should land in front of a person, not become a finding.
+- Measure with the strict question. An early OCR test counted a hit if the number or the unit appeared anywhere, and it made a useless change look like a big gain.
+- Say what isn't done. The README and the site list what's missing, like TLS and an outside security review, next to what works.
+- Put the important rules where they can't be skipped. Only reviewed values reach the rule engine, and that check lives in the engine, not in the screen.
+
+<Screenshot
+  image="maanak-legal"
+  alt="The Maanak legal sources page. It lists 11 interpretations and 0 verified citations."
+  caption="The legal sources page says plainly that 0 of the 11 citations are verified."
+/>
+
+Maanak is not a government service. It isn't affiliated with or endorsed by any authority, and every legal conclusion is recorded against the officer who made it.

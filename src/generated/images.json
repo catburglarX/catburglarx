@@ -1,0 +1,47 @@
+{
+  "avatar": {
+    "width": 1024,
+    "height": 1024,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAAAwAQCdASoMAAwAA4BaJZgAA3AA/vBlNq+FM030/TwgbeHfbcQv/hrmJm7BAAAA"
+  },
+  "poornima": {
+    "width": 250,
+    "height": 265,
+    "blurDataURL": "data:image/webp;base64,UklGRkYBAABXRUJQVlA4WAoAAAAQAAAACwAADAAAQUxQSJ0AAAABgJpt27LsIbm7JMiQOVgAMg2iRocIC+gEHDT3KdxdRvi++Lu9929DRATBJE21HUPqemcUCo46DQ2R5RVgDHiz/vLEPr6+PtiT9d+xX/FqIaH/CQxgeAqIFJ6H/zx4FTEf9x/eF6tn1/gEPrHJNqr5DD5/RTZX048rBR7gi+WxnmycW14oKVycnUh6u54Wq/3pLiUBOaKZbicRcZIAAFZQOCCCAAAAUAIAnQEqDAANAAOAWiWwAnQ1wDpMwX/a2KmQAP5zMR0uqZwkD/FLJGdQX6rNTGDpQGzXneYCTnmxv+KHlM8qX/iAKSGLwxiY3gZrgOOzqp7Lz1L0ch+HLT1+dJt8D1aaxIyGo2ymzZVJbOfATpz91/5bG3d/UoHx/wTnFtkAfG2AAA=="
+  },
+  "birla-open-minds": {
+    "width": 400,
+    "height": 336,
+    "blurDataURL": "data:image/webp;base64,UklGRgABAABXRUJQVlA4WAoAAAAQAAAACwAACQAAQUxQSHkAAAAAAAABAA8cGw4AAAAAAQIAEDE+Py8SAAEAAAABGj4rLjkhAgABDRoRIyEaECcUAw0ANXhFVUJ1PFwbAGgNMWxDVT1rN1UuFmI0PHNxcGZUbGx0Y2tDSn1/cJlqqnurZ5BRL2E1XVNJS1ZWXlo0DygoIx8lJRUZICMVAFZQOCBgAAAAEAIAnQEqDAAKAAOAWiWwAnS6AAJy6pzyAAD9vUxXmCervzH5vGM+0OEM8sCFk9oSQgQxn9zqAND0e61+CeiFRaNHTf9DR8Fw7vQQ2dOQO4Io//jibduBHQrfEQQ788AA"
+  },
+  "banasthali": {
+    "width": 447,
+    "height": 447,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoMAAwAA4BaJQBOgCPwtZSNnyAA/vCNquIF6qvRAgxTJdNNH/aVcAeGa6PpZxqtFdY4Cisu8f93oZEdWeCHdSFsYYv+Ml3YAAA="
+  },
+  "sih": {
+    "width": 336,
+    "height": 360,
+    "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoMAA0AA4BaJagCw7YsZuKrAru3XAAA/vVJeCisp8SFdDzJ5dUxrb8B8ZDXrPqJ3DscKuHR7W9+3R+1W1iYrN2tC/yX71LWpB4KuBwp315pNggB1gAAAA=="
+  },
+  "maanak-home": {
+    "width": 1440,
+    "height": 900,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACQAQCdASoMAAgAA4BaJQAAXwzNQKAA/qocpnrMox0vLPhjW/JP/Na/7KLqtx3moSQKzC6Mx/whFubIAAA="
+  },
+  "maanak-services": {
+    "width": 1440,
+    "height": 900,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoMAAgAA4BaJaQAAuTyKTmAAP7yFr61VGC69zmS2W5eoNHPkpX7QAAA"
+  },
+  "maanak-rules": {
+    "width": 1440,
+    "height": 900,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACQAQCdASoMAAgAA4BaJaQAAudVMbgA/u3vcvf/kqmwjCZV4XiNE+QAAAA="
+  },
+  "maanak-legal": {
+    "width": 1440,
+    "height": 900,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACwAQCdASoMAAgAA4BaJaQAAudQQGeAAP7zr8blKmJw5wBU3CS4CtAAAAA="
+  }
+}

@@ -1,0 +1,492 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Design tokens. Every colour the site uses lives here, once for each theme.
+  scripts/check-contrast.mjs reads these two blocks and fails the build if a
+  text pair drops under WCAG AA, so keep each value a plain six-digit hex.
+*/
+:root {
+  --background: #fff8ee;
+  --background-deep: #fdeef2;
+  --foreground: #2b2226;
+  --card: #fffcf7;
+  --muted: #fbeef0;
+  --muted-foreground: #7a5566;
+  --primary: #cc3a74;
+  --primary-hover: #b42f64;
+  --primary-foreground: #ffffff;
+  --secondary: #f9c2d4;
+  --secondary-foreground: #2b2226;
+  --accent: #4fb3a0;
+  --accent-soft: #e0f3ee;
+  --accent-foreground: #1b6b5c;
+  --brace: #2d8676;
+  --link: #1f7a6a;
+  --border: #f0d0db;
+  --ring: #1f7a6a;
+  --tooltip: #3b2a36;
+  --tooltip-foreground: #fff8ee;
+  --blush: #f4a3b8;
+  --heat-0: #f5e3e8;
+  --heat-1: #f9c2d4;
+  --heat-2: #f4a3b8;
+  --heat-3: #e0709a;
+  --heat-4: #b8326a;
+
+  --shiki-foreground: #2b2226;
+  --shiki-background: #fffcf7;
+  --shiki-token-keyword: #b42f64;
+  --shiki-token-string: #1f7a6a;
+  --shiki-token-string-expression: #1f7a6a;
+  --shiki-token-comment: #85616f;
+  --shiki-token-constant: #9a4a14;
+  --shiki-token-parameter: #2b2226;
+  --shiki-token-function: #7a3e62;
+  --shiki-token-punctuation: #6b4f5c;
+  --shiki-token-link: #1f7a6a;
+
+  --glass: rgb(255 252 247 / 0.7);
+  --glass-strong: rgb(255 252 247 / 0.86);
+  --glass-border: rgb(255 255 255 / 0.75);
+  --shadow-tint: 204 58 116;
+  --blob-1: #ffc9dc;
+  --blob-2: #ffe1cc;
+  --blob-3: #c9ede3;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #1b1418;
+  --background-deep: #140f12;
+  --foreground: #fbeff4;
+  --card: #231a20;
+  --muted: #2e2229;
+  --muted-foreground: #c9afbb;
+  --primary: #f59ac0;
+  --primary-hover: #f8b3d0;
+  --primary-foreground: #1b1418;
+  --secondary: #3d2834;
+  --secondary-foreground: #fbeff4;
+  --accent: #6fd1be;
+  --accent-soft: #19322d;
+  --accent-foreground: #8fe0cf;
+  --brace: #6fd1be;
+  --link: #6fd1be;
+  --border: #3e2d37;
+  --ring: #6fd1be;
+  --tooltip: #fbeff4;
+  --tooltip-foreground: #1b1418;
+  --blush: #c96b90;
+  --heat-0: #33262d;
+  --heat-1: #5c3046;
+  --heat-2: #8c3f63;
+  --heat-3: #c65b8a;
+  --heat-4: #f59ac0;
+
+  --shiki-foreground: #fbeff4;
+  --shiki-background: #231a20;
+  --shiki-token-keyword: #f59ac0;
+  --shiki-token-string: #6fd1be;
+  --shiki-token-string-expression: #6fd1be;
+  --shiki-token-comment: #b0949f;
+  --shiki-token-constant: #ffc998;
+  --shiki-token-parameter: #fbeff4;
+  --shiki-token-function: #f3c1dc;
+  --shiki-token-punctuation: #d6bfca;
+  --shiki-token-link: #6fd1be;
+
+  --glass: rgb(35 26 32 / 0.66);
+  --glass-strong: rgb(35 26 32 / 0.84);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --shadow-tint: 0 0 0;
+  --blob-1: #4a2236;
+  --blob-2: #3a2430;
+  --blob-3: #173530;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-brace: var(--brace);
+  --color-link: var(--link);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-tooltip: var(--tooltip);
+  --color-tooltip-foreground: var(--tooltip-foreground);
+  --color-blush: var(--blush);
+
+  --font-heading: var(--font-fredoka), ui-rounded, "Nunito", system-ui, sans-serif;
+  --font-sans: var(--font-nunito), ui-rounded, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius-card: 22px;
+  --radius-control: 12px;
+
+  --shadow-soft:
+    0 12px 32px -16px rgb(var(--shadow-tint) / 0.35), 0 2px 6px rgb(var(--shadow-tint) / 0.06);
+  --shadow-lift:
+    0 22px 40px -20px rgb(var(--shadow-tint) / 0.45), 0 4px 10px rgb(var(--shadow-tint) / 0.08);
+  --shadow-button: 0 10px 22px -12px rgb(var(--shadow-tint) / 0.7);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 96px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--background);
+    background-image: linear-gradient(180deg, var(--background) 0%, var(--background-deep) 100%);
+    background-attachment: fixed;
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--blush) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background: var(--blush);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  kbd {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Frosted glass is kept for raised surfaces only. Browsers without
+     backdrop-filter get the solid card colour, which is designed to stand alone. */
+  .glass {
+    border: 1px solid var(--border);
+    background-color: var(--card);
+  }
+
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass {
+      border-color: var(--glass-border);
+      background-color: var(--glass);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      backdrop-filter: blur(16px) saturate(150%);
+    }
+
+    .glass-strong {
+      background-color: var(--glass-strong);
+    }
+  }
+
+  .card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background-color: var(--card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .link {
+    color: var(--link);
+    font-weight: 700;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
+    transition: text-decoration-color 150ms ease;
+  }
+
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Code blocks from Shiki. Token colours come from the --shiki-* tokens above. */
+  .shiki {
+    overflow-x: auto;
+    margin: 0;
+    padding: 16px 18px 18px;
+    background-color: var(--shiki-background) !important;
+    color: var(--shiki-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    tab-size: 2;
+  }
+
+  .shiki code {
+    font-family: inherit;
+  }
+}
+
+/* Scroll reveal for <BlurFade>. The hidden state needs JS (html.js is set by
+   the theme script) and motion allowed. If the app never hydrates, so
+   html.reveal-ready never appears, the fallback shows every block after 2.5s. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    transition:
+      opacity 0.6s ease var(--reveal-delay, 0s),
+      transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0s),
+      filter 0.6s ease var(--reveal-delay, 0s);
+  }
+
+  .js [data-reveal]:not([data-shown]) {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+
+  .js:not(.reveal-ready) [data-reveal]:not([data-shown]) {
+    animation: reveal-fallback 0.4s ease 2.5s forwards;
+  }
+}
+
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Background decoration. CSS only, transform and opacity only. */
+.blob {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  opacity: 0.55;
+  will-change: transform;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+.bit {
+  position: absolute;
+  bottom: -40px;
+  color: var(--blush);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: rise var(--dur) linear var(--delay) infinite;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4vmax, 5vmax, 0) scale(1.08);
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  12%,
+  80% {
+    opacity: var(--o);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--sway), -110vh, 0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes blink-eye {
+  0%,
+  93%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes burst {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1);
+  }
+}
+
+@keyframes fall {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(var(--sway), calc(100vh + 80px), 0) rotate(var(--rot));
+  }
+}
+
+@keyframes zzz {
+  0% {
+    opacity: 0;
+    transform: translate(0, 4px) scale(0.8);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(8px, -12px) scale(1.1);
+  }
+}
+
+.animate-blink-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink-eye 5s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .motion-decor {
+    display: none !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+
+  /* Paper is always light, whatever theme the screen is in. */
+  :root,
+  .dark {
+    --background: #ffffff;
+    --background-deep: #ffffff;
+    --foreground: #2b2226;
+    --card: #ffffff;
+    --muted-foreground: #6b4a59;
+    --primary: #b42f64;
+    --link: #1f7a6a;
+    --border: #e8c8d3;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+}

@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# tests
+test-results/
+playwright-report/
+blob-report/
+
+# env
+.env*
+!.env.example
+
+# os and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# local working files that are not part of the site
+.kiro/
+/antra-portfolio-demo.html
+/myavatar.png
+/sih.jpg
+/banasthali.jpg
+/openmind a birlaschool logo.png
+/Poornima_College_logo.png
+
+# local screenshots
+.shots/

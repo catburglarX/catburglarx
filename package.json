@@ -1,0 +1,64 @@
+{
+  "name": "antra-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Antra Kumari's portfolio. coffee and { code }.",
+  "author": "Antra Kumari (https://github.com/catburglarX)",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && node scripts/flatten-segments.mjs && node scripts/csp.mjs",
+    "start": "node scripts/serve.mjs",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "assets": "node scripts/process-assets.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check:bundle": "node scripts/check-bundle.mjs",
+    "resume:pdf": "node scripts/resume-pdf.mjs",
+    "test": "playwright test",
+    "verify": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm check:contrast && pnpm build && pnpm check:bundle && pnpm test"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "3.1.1",
+    "@radix-ui/react-dialog": "1.1.23",
+    "@shikijs/rehype": "4.4.3",
+    "cmdk": "1.1.1",
+    "lucide-react": "1.48.0",
+    "motion": "13.4.5",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "shiki": "4.4.3",
+    "sonner": "2.0.8",
+    "yaml": "2.9.1",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/mdx": "2.0.14",
+    "@types/node": "24.19.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.6",
+    "prettier": "3.9.9",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "sharp": "0.35.5",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  }
+}
