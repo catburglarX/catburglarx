@@ -16,7 +16,7 @@ export default defineConfig([
   },
   {
     // next/og renders <img> into a PNG at build time; next/image does not apply there.
-    files: ["src/app/opengraph-image.tsx"],
+    files: ["src/app/og.png/route.tsx"],
     rules: { "@next/next/no-img-element": "off" },
   },
   {

@@ -4,12 +4,14 @@ import { ImageResponse } from "next/og";
 import { profile } from "@/data/profile";
 
 export const dynamic = "force-static";
-export const alt = `${profile.name}, ${profile.role}. coffee and { code }`;
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+
+// Served as /og.png, not as a metadata route: GitHub Pages picks the
+// content type from the file extension, and an extensionless image is
+// served as application/octet-stream, which some link previews reject.
+const size = { width: 1200, height: 630 };
 
 // The Open Graph card: pink, my cat, my name and what I do. Built once at build time.
-export default async function OpengraphImage() {
+export async function GET() {
   const fonts = path.join(process.cwd(), "assets", "fonts");
   const [fredoka, nunito, mark] = await Promise.all([
     readFile(path.join(fonts, "fredoka-600.woff")),

@@ -110,7 +110,7 @@ adds a screenshot.
 content/projects/       MDX case studies, one file per project
 src/data/               profile.ts (my content), schema.ts and validate.ts (Zod)
 src/app/                routes: home, /projects, /projects/[slug], /resume, 404,
-                        plus metadata files (OG image, sitemap, robots, manifest, icons)
+                        plus og.png, sitemap, robots, manifest and icons
 src/components/home/    one file per home page section
 src/components/layout/  top bar, dock, footer, background, theme toggle
 src/components/features/  lazy extras: command menu, cursor cat, hearts, toasts

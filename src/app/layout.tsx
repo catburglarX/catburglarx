@@ -31,6 +31,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const ogAlt = `${profile.name}, ${profile.role}. coffee and { code }`;
 const description = `${profile.name} is a ${profile.role.toLowerCase()} at Poornima College of Engineering, Jaipur. HTML, CSS, learning Python, and the Maanak project. Open to internships and hackathon teams.`;
 
 export const metadata: Metadata = {
@@ -63,12 +64,14 @@ export const metadata: Metadata = {
     siteName: profile.name,
     title: `${profile.name} · coffee and { code }`,
     description,
+    images: [{ url: "og.png", width: 1200, height: 630, alt: ogAlt, type: "image/png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} · coffee and { code }`,
     description,
     creator: `@${profile.handle}`,
+    images: [{ url: "og.png", alt: ogAlt }],
   },
   formatDetection: { email: false, telephone: false, address: false },
 };
