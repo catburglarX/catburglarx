@@ -9,7 +9,7 @@ import { AppProvider } from "@/components/providers/app-provider";
 import { profile } from "@/data/profile";
 import { assertValidProfile } from "@/data/validate";
 import { getProjects } from "@/lib/projects";
-import { SITE_ORIGIN, absoluteUrl } from "@/lib/site";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
 const fredoka = Fredoka({
@@ -34,7 +34,8 @@ const jetbrains = JetBrains_Mono({
 const description = `${profile.name} is a ${profile.role.toLowerCase()} at Poornima College of Engineering, Jaipur. HTML, CSS, learning Python, and the Maanak project. Open to internships and hackathon teams.`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_ORIGIN),
+  // Includes the base path, so generated image URLs land under /catburglarx.
+  metadataBase: new URL(`${SITE_URL}/`),
   title: {
     default: `${profile.name} · coffee and { code }`,
     template: `%s · ${profile.name}`,
