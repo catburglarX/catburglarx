@@ -10,8 +10,8 @@ First-year B.Tech CSE student at Poornima College of Engineering, Jaipur.<br />
 I know HTML and CSS, I'm learning Python, and I'm looking for an internship and a hackathon team.
 
 [Portfolio](https://catburglarx.github.io/catburglarx/) ·
-[Email](mailto:connect.antrakumari@gmail.com) ·
-[LinkedIn](https://www.linkedin.com/in/catburglarX) ·
+[Email](mailto:connect.antra@gmail.com) ·
+[LinkedIn](https://www.linkedin.com/in/antra2703) ·
 [Instagram](https://www.instagram.com/catburglarX) ·
 [X](https://x.com/catburglarX)
 
@@ -46,7 +46,7 @@ HTML, CSS, Git and GitHub. Learning Python right now.
 
 ### Hackathons
 
-I took part in Smart India Hackathon 2026. If your team needs someone for the next one, [email me](mailto:connect.antrakumari@gmail.com).
+I took part in Smart India Hackathon 2026. If your team needs someone for the next one, [email me](mailto:connect.antra@gmail.com).
 
 </div>
 

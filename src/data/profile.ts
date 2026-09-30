@@ -11,7 +11,7 @@ export const profile = {
   pronouns: "she/her",
   role: "First-year B.Tech CSE student",
   location: "Jaipur, India",
-  email: "connect.antrakumari@gmail.com",
+  email: "connect.antra@gmail.com",
   status: "Open to internships and hackathon teams",
   tagline: "coffee and { code }",
   // Keep these about the same length, so the braces around them sit close.
@@ -83,7 +83,7 @@ export const profile = {
     "I want to join a team for my next hackathon. I can build web pages, and I'm getting better at Python.",
   socials: [
     { name: "GitHub", handle: "catburglarX", url: "https://github.com/catburglarX" },
-    { name: "LinkedIn", handle: "catburglarX", url: "https://www.linkedin.com/in/catburglarX" },
+    { name: "LinkedIn", handle: "antra2703", url: "https://www.linkedin.com/in/antra2703" },
     { name: "Instagram", handle: "catburglarX", url: "https://www.instagram.com/catburglarX" },
     { name: "X", handle: "catburglarX", url: "https://x.com/catburglarX" },
   ],
