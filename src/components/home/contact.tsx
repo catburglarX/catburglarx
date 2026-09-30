@@ -16,8 +16,8 @@ export function Contact() {
           <Braces>contact</Braces>
         </h2>
         <p className="mx-auto mt-3 max-w-[52ch] text-muted-foreground">
-          Have an internship or a hackathon team for me? Send me an email. You can also find me as @
-          {profile.handle} on all of these.
+          Have an internship or a hackathon team for me? Send me an email. You can also find me on
+          these.
         </p>
         <p className="mt-2 font-mono text-sm font-bold break-all">{profile.email}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
