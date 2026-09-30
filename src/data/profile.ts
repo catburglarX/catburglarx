@@ -84,8 +84,9 @@ export const profile = {
   socials: [
     { name: "GitHub", handle: "catburglarX", url: "https://github.com/catburglarX" },
     { name: "LinkedIn", handle: "antra2703", url: "https://www.linkedin.com/in/antra2703" },
+    { name: "LeetCode", handle: "antra2703", url: "https://leetcode.com/u/antra2703/" },
     { name: "Instagram", handle: "catburglarX", url: "https://www.instagram.com/catburglarX" },
-    { name: "X", handle: "catburglarX", url: "https://x.com/catburglarX" },
+    { name: "X", handle: "antrakumarihj", url: "https://x.com/antrakumarihj" },
   ],
   resumePdf: "/antra-kumari-resume.pdf",
 } satisfies ProfileInput;

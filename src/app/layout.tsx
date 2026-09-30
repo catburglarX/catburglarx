@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${profile.name} · coffee and { code }`,
     description,
-    creator: `@${profile.handle}`,
+    creator: `@${profile.socials.find((s) => s.name === "X")?.handle ?? profile.handle}`,
     images: [{ url: "og.png", alt: ogAlt }],
   },
   formatDetection: { email: false, telephone: false, address: false },

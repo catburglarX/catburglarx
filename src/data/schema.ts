@@ -4,7 +4,7 @@ const url = z.url({ protocol: /^https?$/ });
 const nonEmpty = z.string().trim().min(1);
 
 export const socialSchema = z.object({
-  name: z.enum(["GitHub", "LinkedIn", "Instagram", "X"]),
+  name: z.enum(["GitHub", "LinkedIn", "LeetCode", "Instagram", "X"]),
   handle: nonEmpty,
   url,
 });

@@ -25,10 +25,11 @@ export function AvatarButton({ lines }: { lines: string[] }) {
         aria-label="Say hi to my cat"
         className="group block aspect-square w-full rounded-full transition-transform duration-300 motion-safe:hover:-rotate-3"
       >
-        <span
-          aria-hidden="true"
-          className="absolute -inset-3 rounded-full border-2 border-dashed border-accent/60 motion-safe:animate-[spin_40s_linear_infinite]"
-        />
+        {/* The ring spins inside a clipped circle. Spinning it directly would swing
+            its square corners past the page edge and scroll the page sideways. */}
+        <span aria-hidden="true" className="absolute -inset-3 overflow-hidden rounded-full">
+          <span className="absolute inset-0 rounded-full border-2 border-dashed border-accent/60 motion-safe:animate-[spin_40s_linear_infinite]" />
+        </span>
         <CatAvatar
           blink
           className="motion-safe:animate-float relative size-full drop-shadow-[0_18px_28px_rgb(204_58_116/0.3)]"

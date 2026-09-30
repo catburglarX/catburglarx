@@ -12,8 +12,9 @@ I know HTML and CSS, I'm learning Python, and I'm looking for an internship and 
 [Portfolio](https://catburglarx.github.io/catburglarx/) ·
 [Email](mailto:connect.antra@gmail.com) ·
 [LinkedIn](https://www.linkedin.com/in/antra2703) ·
+[LeetCode](https://leetcode.com/u/antra2703/) ·
 [Instagram](https://www.instagram.com/catburglarX) ·
-[X](https://x.com/catburglarX)
+[X](https://x.com/antrakumarihj)
 
 <br />
 
@@ -178,7 +179,7 @@ Reused assets:
 
 - Technology logos from [Devicon](https://github.com/devicons/devicon) (MIT). The logos
   themselves are trademarks of their owners.
-- GitHub and X marks from [Simple Icons](https://simpleicons.org) (CC0), and interface icons
+- GitHub, LeetCode and X marks from [Simple Icons](https://simpleicons.org) (CC0), and interface icons
   from [Lucide](https://lucide.dev) (ISC).
 - Fredoka, Nunito and JetBrains Mono are under the SIL Open Font License.
 - The Poornima, Birla Open Minds, Banasthali Vidyapith and Smart India Hackathon logos belong
